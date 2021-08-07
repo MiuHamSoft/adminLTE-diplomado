@@ -1,0 +1,66 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Carga de archivos con drag & drop</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Simple Tables</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <button *ngIf="files.length > 0" type="button" class="btn btn-default"
+                        (click)="clearFilesArray()">Limpiar
+                        archivos</button>
+                    <button *ngIf="filesToUpload.length > 0" type="button" class="btn btn-default"
+                        (click)="uploadFiles()">Enviar
+                        archivos</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <ngx-file-drop dropZoneLabel="Jalar archivos aquí" (onFileDrop)="dropped($event)"
+                        (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" accept=".csv"
+                        dropZoneClassName="drag-drop-custom" [showBrowseBtn]="false" browseBtnLabel="Explorar"
+                        multiple="true">
+                        <!-- <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                            Optional custom content that replaces the the entire default content.
+                            <button class="btn btn-default" type="button" (click)="openFileSelector()">Browse
+                                Files</button>
+                        </ng-template> -->
+                    </ngx-file-drop>
+                    <div class="upload-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody class="upload-name-style">
+                                <tr *ngFor="let item of files; let i=index">
+                                    <td><strong>{{ item.relativePath }}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

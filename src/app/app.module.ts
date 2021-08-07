@@ -15,8 +15,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { WidgetsComponent } from './main/widgets/widgets.component';
 import { TablesComponent } from './main/tables/tables.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpService } from './services/http.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { FileUploadComponent } from './main/file-upload/file-upload.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { LoginComponent } from './common/login/login.component';
+import { GeneralElementsComponent } from './forms/general-elements/general-elements.component';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { ErrorInterceptor } from './services/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +39,10 @@ import { HttpService } from './services/http.service';
     ChartjsComponent,
     ModalsComponent,
     WidgetsComponent,
-    TablesComponent
+    TablesComponent,
+    FileUploadComponent,
+    LoginComponent,
+    GeneralElementsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +51,19 @@ import { HttpService } from './services/http.service';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableExporterModule,
+    FormsModule,
+    NgxFileDropModule,
+    ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
   providers: [
-    HttpService
+    HttpService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
