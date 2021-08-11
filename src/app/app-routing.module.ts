@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChartjsComponent } from './charts/chartjs/chartjs.component';
 import { LoginComponent } from './common/login/login.component';
+import { RegisterComponent } from './common/register/register.component';
 import { GeneralElementsComponent } from './forms/general-elements/general-elements.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { FileUploadComponent } from './main/file-upload/file-upload.component';
@@ -21,7 +22,12 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'registro',
+    component: RegisterComponent
+  },
+  {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     component: DashboardComponent
   },
   {
@@ -31,6 +37,7 @@ const routes: Routes = [
   },
   {
     path: 'forms',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'general-elements',
@@ -40,6 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'charts',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'chartjs',
@@ -49,6 +57,7 @@ const routes: Routes = [
   },
   {
     path: 'ui',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'modals',
@@ -58,6 +67,7 @@ const routes: Routes = [
   },
   {
     path: 'ejemplos',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'tablas',

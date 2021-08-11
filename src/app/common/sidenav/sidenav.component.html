@@ -11,12 +11,18 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="../../../assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
-            </div>
+            <ng-container *ngIf="(currentUser != null && !auth.isTokenExpired(currentToken)); else noUser">
+                <div class="image">
+                    <img src="../../../assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+                        alt="User Image">
+                </div>
+                <div class="info">
+                    <a class="d-block">{{currentUser.username}} - {{currentUser.role}}</a>
+                </div>
+            </ng-container>
+            <ng-template #noUser>
+                <button class="btn btn-info" [routerLink]="['/login']">Iniciar Sesión</button>
+            </ng-template>
         </div>
 
         <!-- SidebarSearch Form -->
@@ -45,10 +51,16 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a [routerLink]="['/login']" routerLinkActive="active" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Login</p>
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a [routerLink]="['/registro']" routerLinkActive="active" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Registro</p>
                             </a>
                         </li>
                     </ul>

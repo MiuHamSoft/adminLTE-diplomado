@@ -7,8 +7,6 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { SidenavComponent } from './common/sidenav/sidenav.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { FooterComponent } from './common/footer/footer.component';
-import { ChartjsComponent } from './charts/chartjs/chartjs.component';
-import { ChartsModule } from 'ng2-charts';
 import { ModalsComponent } from './ui/modals/modals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -16,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { WidgetsComponent } from './main/widgets/widgets.component';
 import { TablesComponent } from './main/tables/tables.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpService } from './services/http.service';
+import { HttpService } from './services/http/http.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -28,6 +26,11 @@ import { LoginComponent } from './common/login/login.component';
 import { GeneralElementsComponent } from './forms/general-elements/general-elements.component';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { ErrorInterceptor } from './services/interceptors/error.interceptor';
+import { RegisterComponent } from './common/register/register.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ChartsModule } from 'ng2-charts';
+import { ChartjsComponent } from './charts/chartjs/chartjs.component';
+import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 
 @NgModule({
   declarations: [
@@ -36,18 +39,18 @@ import { ErrorInterceptor } from './services/interceptors/error.interceptor';
     SidenavComponent,
     DashboardComponent,
     FooterComponent,
-    ChartjsComponent,
     ModalsComponent,
     WidgetsComponent,
     TablesComponent,
     FileUploadComponent,
     LoginComponent,
-    GeneralElementsComponent
+    GeneralElementsComponent,
+    RegisterComponent,
+    ChartjsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ChartsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
@@ -60,6 +63,9 @@ import { ErrorInterceptor } from './services/interceptors/error.interceptor';
     ReactiveFormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+    MatTooltipModule,
+    ChartsModule,
+    PasswordStrengthMeterModule
   ],
   providers: [
     HttpService,

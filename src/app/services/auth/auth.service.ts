@@ -2,36 +2,53 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Endpoints } from 'src/app/enums/endpoints';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private url: string = "https://run.mocky.io/v3/85e319af-c10c-441c-9861-16e09136e82f";
-  private urlFail: string = "https://run.mocky.io/v3/43d706bb-a4a8-4ecf-8630-16ae1c6d1142";
 
   constructor(public http: HttpClient,
     private router: Router,
-    private toast: ToastrService) { }
+    private toast: ToastrService) {
+  }
 
   login(data) {
-    this.http.post(this.url, data)
+    this.http.post(`${environment.url}${Endpoints.loginMocky}`, data)
       .subscribe(
         (result: any) => {
           console.log(result)
-          this.router.navigate(["/dashboard"]);
           this.toast.success(result.message);
-
           this.setUserData(result.data);
-        },
-        (error) => {
-          console.log(error)
+
+          this.router.navigate(["/dashboard"]);
+          setTimeout(() => {
+            location.reload();
+          }, 500);
         }
       );
   }
 
-  logout(){
-    
+  register(data) {
+    this.http.post(`${environment.url}${Endpoints.registerMocky}`, data)
+      .subscribe(
+        (result: any) => {
+          console.log(result)
+          this.router.navigate(["/login"]);
+          this.toast.success(result.message);
+        }
+      );
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(["/login"]);
+    setTimeout(() => {
+      location.reload();
+    }, 500);
   }
 
   setUserData(user) {

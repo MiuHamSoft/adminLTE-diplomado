@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <re-captcha (resolved)="resolved($event)"
+                                        <re-captcha class="captcha-wrapper" (resolved)="resolved($event)"
                                             siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
                                     </div>
                                 </div>
@@ -64,6 +64,8 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info" *ngIf="showButtonFlag">Ingresar</button>
+                                <button type="button" [routerLink]="['/registro']"
+                                    class="btn btn-info">Registro</button>
                             </div>
                             <!-- /.card-footer -->
                         </form>

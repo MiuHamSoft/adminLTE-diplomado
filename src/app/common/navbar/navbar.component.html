@@ -126,6 +126,17 @@
             </div>
         </li>
         <li class="nav-item">
+            <a *ngIf="(currentUser != null && !auth.isTokenExpired(currentToken)); else noUser" class="nav-link"
+                matTooltip="Cerrar Sesión" (click)="doLogout()" role="button">
+                <i class="fas fa-power-off"></i>
+            </a>
+            <ng-template #noUser>
+                <a class="nav-link" matTooltip="Ingresar" [routerLink]="['/login']" role="button">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+            </ng-template>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
