@@ -31,6 +31,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ChartsModule } from 'ng2-charts';
 import { ChartjsComponent } from './charts/chartjs/chartjs.component';
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { TokenInterceptor } from './services/interceptors/token.interceptor';
+import { JwtTokenExampleComponent } from './main/jwt-token-example/jwt-token-example.component';
+import { LoadingScreenComponent } from './common/loading-screen/loading-screen.component';
+import { LoadingService } from './services/loading/loading.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,9 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
     LoginComponent,
     GeneralElementsComponent,
     RegisterComponent,
-    ChartjsComponent
+    ChartjsComponent,
+    JwtTokenExampleComponent,
+    LoadingScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,11 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
   ],
   providers: [
     HttpService,
+    JwtHelperService,
+    LoadingService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

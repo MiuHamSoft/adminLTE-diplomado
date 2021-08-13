@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpService } from 'src/app/services/http/http.service';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 
 
 @Component({
@@ -20,18 +21,22 @@ export class TablesComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService,
+    private loadingService: LoadingService) { }
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData() {
+    this.loadingService.showLoading();
     this.http.retrieveData("").subscribe(
       (result) => {
         this.dataSource = new MatTableDataSource(result.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+
+        this.loadingService.hideLoading();
       });
   }
 

@@ -9,6 +9,15 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.wrapper {
+  height: 100% !important;
+}
+
+.vertical-align {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
 .drag-drop-custom {
   background-color: #080808 !important;
   border-radius: 15px;

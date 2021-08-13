@@ -63,9 +63,16 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-info" *ngIf="showButtonFlag">Ingresar</button>
-                                <button type="button" [routerLink]="['/registro']"
-                                    class="btn btn-info">Registro</button>
+                                <div class="row">
+                                    <div class="col-6 text-center">
+                                        <button type="submit" class="btn btn-info"
+                                            *ngIf="showButtonFlag">Ingresar</button>
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <button type="button" [routerLink]="['/registro']"
+                                            class="btn btn-info">Registro</button>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-footer -->
                         </form>
