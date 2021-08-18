@@ -107,7 +107,7 @@
                                     <select
                                         [ngClass]="{'is-invalid': (!registerFormGroup.get('role').valid) && registerFormGroup.get('role').touched,'is-valid': (registerFormGroup.get('role').valid)}"
                                         formControlName="role" class="form-control form-select">
-                                        <option selected [value]="">Seleccione una opción</option>
+                                        <option selected>Seleccione una opción</option>
                                         <option [value]="item.id" *ngFor="let item of roles">{{item.role}}</option>
                                     </select>
                                     <div *ngIf="(!registerFormGroup.get('role').valid) && registerFormGroup.get('role').touched"

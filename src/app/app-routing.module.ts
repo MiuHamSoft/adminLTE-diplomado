@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChartjsComponent } from './charts/chartjs/chartjs.component';
 import { LoginComponent } from './common/login/login.component';
 import { RegisterComponent } from './common/register/register.component';
+import { ExcelExportComponent } from './excel-export/excel-export.component';
 import { GeneralElementsComponent } from './forms/general-elements/general-elements.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { FileUploadComponent } from './main/file-upload/file-upload.component';
 import { JwtTokenExampleComponent } from './main/jwt-token-example/jwt-token-example.component';
+import { PdfViewerComponent } from './main/pdf-viewer/pdf-viewer.component';
 import { TablesComponent } from './main/tables/tables.component';
 import { WidgetsComponent } from './main/widgets/widgets.component';
 import { AuthGuard } from './services/auth/auth.guard';
@@ -81,6 +83,14 @@ const routes: Routes = [
       {
         path: 'jwt-token',
         component: JwtTokenExampleComponent
+      },
+      {
+        path: 'pdf-viewer',
+        component: PdfViewerComponent
+      },
+      {
+        path: 'exceljs',
+        component: ExcelExportComponent
       }
     ]
   }

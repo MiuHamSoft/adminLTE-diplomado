@@ -36,6 +36,10 @@ import { TokenInterceptor } from './services/interceptors/token.interceptor';
 import { JwtTokenExampleComponent } from './main/jwt-token-example/jwt-token-example.component';
 import { LoadingScreenComponent } from './common/loading-screen/loading-screen.component';
 import { LoadingService } from './services/loading/loading.service';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PdfViewerComponent } from './main/pdf-viewer/pdf-viewer.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ExcelExportComponent } from './excel-export/excel-export.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,9 @@ import { LoadingService } from './services/loading/loading.service';
     RegisterComponent,
     ChartjsComponent,
     JwtTokenExampleComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    PdfViewerComponent,
+    ExcelExportComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +78,8 @@ import { LoadingService } from './services/loading/loading.service';
     RecaptchaFormsModule,
     MatTooltipModule,
     ChartsModule,
-    PasswordStrengthMeterModule
+    PasswordStrengthMeterModule,
+    PdfViewerModule
   ],
   providers: [
     HttpService,
@@ -85,3 +92,5 @@ import { LoadingService } from './services/loading/loading.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

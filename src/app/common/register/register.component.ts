@@ -26,7 +26,9 @@ export class RegisterComponent implements OnInit {
       id: 2,
       role: "ROLE_TEACHER"
     }
-  ]
+  ];
+
+  selectDefaultValue = null;
 
   constructor(private formBuilder: FormBuilder,
     private auth: AuthService) { }
@@ -44,7 +46,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onStrengthChange(value) {
-    console.log(value)
     this.registerFormGroup.get("password-strength").setValue(value);
   }
 
@@ -53,7 +54,7 @@ export class RegisterComponent implements OnInit {
       'name': ["", Validators.compose([Validators.required])],
       'fathersLastName': ["", Validators.compose([Validators.required])],
       'mothersLastName': ["", Validators.compose([Validators.required])],
-      'role': ["", Validators.compose([Validators.required])],
+      'role': [null, Validators.compose([Validators.required])],
       'username': ["", Validators.compose([Validators.required])],
       'password': ["", Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(this.passwordRegex)])],
       'repeat-password': ["", Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(this.passwordRegex)])],

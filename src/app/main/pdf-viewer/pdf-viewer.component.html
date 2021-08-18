@@ -1,0 +1,41 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Visor PDF</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Visor PDF</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-default" (click)="downloadPDF()">Descargar PDF</button>
+                </div>
+                <div class="col-12">
+                    <div class="pdf-wrapper">
+                        <pdf-viewer [src]="pdfSrc" [render-text]="false" [stick-to-page]="true" [autoresize]="true"
+                            [original-size]="false" (after-load-complete)="onLoadComplete()" (error)="onError($event)"
+                            (on-progress)="onProgress($event)" style="display: block;">
+                        </pdf-viewer>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
