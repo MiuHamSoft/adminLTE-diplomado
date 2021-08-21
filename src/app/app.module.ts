@@ -40,6 +40,14 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { PdfViewerComponent } from './main/pdf-viewer/pdf-viewer.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ExcelExportComponent } from './excel-export/excel-export.component';
+import { CsvUploadComponent } from './main/csv-upload/csv-upload.component';
+import { StudentsFilterPipe } from './common/filter-pipes/students-filter.pipe';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DragDropComponent } from './main/drag-drop/drag-drop.component';
+import { NotFoundComponent } from './common/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +67,11 @@ import { ExcelExportComponent } from './excel-export/excel-export.component';
     JwtTokenExampleComponent,
     LoadingScreenComponent,
     PdfViewerComponent,
-    ExcelExportComponent
+    ExcelExportComponent,
+    CsvUploadComponent,
+    StudentsFilterPipe,
+    DragDropComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +91,11 @@ import { ExcelExportComponent } from './excel-export/excel-export.component';
     MatTooltipModule,
     ChartsModule,
     PasswordStrengthMeterModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    DragDropModule
   ],
   providers: [
     HttpService,

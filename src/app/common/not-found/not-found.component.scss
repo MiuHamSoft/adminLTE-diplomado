@@ -1,0 +1,23 @@
+.custom-title {
+  font-size: 13vw;
+  color: white;
+}
+
+.custom-text {
+  font-size: 4vw;
+  color: white;
+}
+
+.text-wrapper {
+  transform: translateY(60%);
+}
+
+.content-wrapper {
+  max-height: 100vh !important;
+  min-height: 100vh !important;
+
+  background-image: url("../../../assets/img/404_background.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
